@@ -1,6 +1,6 @@
 ## Node Dev environment
 
-This Environment allows you to vagrant up the development environment and make adjustments to the code. If you make changes in this git repository this will trigger tests to run on Jenkins. 
+This Environment allows you to vagrant up the development environment and make adjustments to the code. If you make changes in this git repository this will trigger tests to run on Jenkins.
 
 ## Prerequisites
 To run this environment you will need the below
@@ -31,4 +31,24 @@ npm install
 npm test
 npm start
 
+```
+
+
+Suggested Edits
+
+```
+server {
+  listen 80;
+  listen [::]:80;
+
+
+
+  server_name example.com;
+
+
+
+  location / {
+      proxy_pass http://localhost:3000/;
+  }
+}
 ```
