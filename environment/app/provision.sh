@@ -7,6 +7,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 
+
+
 # install git
 sudo apt-get install git -y
 
@@ -21,8 +23,15 @@ sudo npm install pm2 -g
 sudo apt-get install nginx -y
 
 # remove the old file and add our one
-sudo rm /etc/nginx/sites-available/default
-sudo cp /home/ubuntu/environment/nginx.default /etc/nginx/sites-available/default
+
+sudo systemctl start nginx
+sudo unlink /etc/nginx/sites-enabled/default
+sudo ln -s /home/ubuntu/environment/reverse_proxy.conf /etc/nginx/sites-enabled/reverse_proxy.conf
+sleep 10
+sudo systemctl reload-or-restart nginx
+sleep 10
+sudo systemctl reload-or-restart nginx
 
 # finally, restart the nginx service so the new config takes hold
+sudo service nginx configtest
 sudo service nginx restart
