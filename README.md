@@ -1,5 +1,13 @@
 ## Node Dev environment
 
+This Environment allows you to vagrant up the development environment and make adjustments to the code. If you make changes in this git repository this will trigger tests to run on Jenkins. 
+
+## Prerequisites
+To run this environment you will need the below
+- Vagrant
+- Git
+- VirtualBox
+
 ## To Start
 
 ```
