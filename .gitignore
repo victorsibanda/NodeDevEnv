@@ -2,3 +2,5 @@
 .git
 .vagrant
 ./vagrant
+/sites-available/default
+*.log
