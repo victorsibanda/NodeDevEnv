@@ -7,6 +7,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 
 
+
+
 # install git
 sudo apt-get install git -y
 
@@ -25,4 +27,5 @@ sudo rm /etc/nginx/sites-available/default
 sudo cp /home/ubuntu/environment/nginx.default /etc/nginx/sites-available/default
 
 # finally, restart the nginx service so the new config takes hold
+sudo service nginx configtest
 sudo service nginx restart
