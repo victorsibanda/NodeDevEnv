@@ -6,7 +6,7 @@ This Environment allows you to vagrant up the development environment and make a
 To run this environment you will need the below
 - Vagrant
 - Git
-- VirtualBox
+- VirtualBox.
 
 ## To Start
 
