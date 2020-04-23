@@ -21,14 +21,13 @@ def set_env vars
   return command
 end
 
-Vagrant.configure("2") do |config|
   config.vm.define "app" do |app|
     app.vm.box = "ubuntu/xenial64"
     app.vm.network "private_network", ip: "192.168.10.100"
     app.hostsupdater.aliases = ["development.local"]
     app.vm.synced_folder "app", "/home/ubuntu/app"
-    app.vm.synced_folder "environment/app", "/home/ubuntu/environment"
-    app.vm.provision "shell", path: "environment/app/provision.sh", privileged: false
+    app.vm.synced_folder 'environment/sites-available', '/etc/nginx/sites-available'
+    app.vm.provision "shell", path: "environment/app/provision.sh"
     app.vm.provision "shell", inline: set_env({ DB_HOST: "mongodb://192.168.10.150:27017/posts" }), privileged: false
   end
 
