@@ -22,7 +22,7 @@ vagrant up
 vagrant ssh app
 ```
 
-## To Test and Use App
+## To Test and Use App :monkey:
 
 ```
 cd /home/ubuntu/app
