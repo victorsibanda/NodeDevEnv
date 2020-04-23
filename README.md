@@ -33,8 +33,22 @@ npm start
 
 ```
 
+## To Access the App:
 
-#### Suggested Edits for Testing
+- Goto
+
+```
+http://development.local
+```
+
+
+- To see the Blog
+```
+http://development.local/posts
+```
+
+
+TODO :: #### Suggested Edits for Testing
 
 ```
 server {
