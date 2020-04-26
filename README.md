@@ -7,6 +7,7 @@ To run this environment you will need the below
 - Vagrant
 - Git
 - VirtualBox.
+- Atom
 
 ## To Start
 
@@ -14,7 +15,18 @@ To run this environment you will need the below
 git clone git@github.com:victorsibanda/NodeDevEnv.git
 ```
 
-## To Use
+Once cloned you may edit the app on your machine and when you git push to a dev* branch. This will trigger a CI pipeline.
+
+## CI Pipeline
+
+The CI pipeline is on Jenkins and the way it works is by firstly pulling from the dev branch. Once this is done, this will run tests on the newly edited code.
+
+
+If the tests are successful and the Jenkins job is complete, It will merge the dev branch to the master branch and this is continuous integration.
+
+To make any further changes git pull the master branch to allow for those changes to be reflected locally and you may repeat this process.  
+
+## To use VM
 
 ```
 vagrant up
@@ -22,47 +34,44 @@ vagrant up
 vagrant ssh app
 ```
 
-## To Test and Use App :monkey:
+### Testing Application Locally (Inside VM)
 
 ```
 cd /home/ubuntu/app
 
 npm install
 npm test
+```
+
+## To Launch the App Locally
+
+
+```
+cd /home/ubuntu/app
+
+npm install
 npm start
 
 ```
+- When this is done visit:
+### Homepage
 
-## To Access the App:
+``development.local``
 
-- Goto
+Displays a simple homepage displaying a Sparta logo and message. This page should return a 200 response.
 
-```
-http://development.local
-```
+### Blog
 
+``development.local/posts``
 
-- To see the Blog
-```
-http://development.local/posts
-```
+This page displays a logo and 100 randomly generated blog posts. The posts are generated during the seeding step.
 
+This page and the seeding is only accessible when a database is available and the DB_HOST environment variable has been set with it's location.
 
-TODO :: #### Suggested Edits for Testing
+### A fibonacci number generator
 
-```
-server {
-  listen 80;
-  listen [::]:80;
+``development.local/fibonacci/{index}``
 
+This page has be implemented poorly on purpose to produce a slow running function. This can be used for performance testing and crash recovery testing.
 
-
-  server_name example.com;
-
-
-
-  location / {
-      proxy_pass http://localhost:3000/;
-  }
-}
-```
+The higher the fibonacci number requested the longer the request will take. A very large number can crash or block the process.
